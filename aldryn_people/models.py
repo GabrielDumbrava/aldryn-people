@@ -8,7 +8,7 @@ import warnings
 from django.conf import settings
 from django.db import models
 from django.urls import NoReverseMatch, reverse
-from django.utils.encoding import force_text, python_2_unicode_compatible
+from django.utils.encoding import force_text
 from django.utils.translation import override, ugettext_lazy as _
 
 from cms.models.pluginmodel import CMSPlugin
@@ -33,7 +33,6 @@ except ImportError:
     from urllib import parse as urlparse
 
 
-@python_2_unicode_compatible
 class Group(TranslationHelperMixin, TranslatedAutoSlugifyMixin,
             TranslatableModel):
     slug_source_field_name = 'name'
@@ -99,7 +98,6 @@ class Group(TranslationHelperMixin, TranslatedAutoSlugifyMixin,
             return reverse('aldryn_people:group-detail', kwargs=kwargs)
 
 
-@python_2_unicode_compatible
 class Person(TranslationHelperMixin, TranslatedAutoSlugifyMixin,
              TranslatableModel):
     slug_source_field_name = 'name'
@@ -254,7 +252,6 @@ class Person(TranslationHelperMixin, TranslatedAutoSlugifyMixin,
         return six.b('{}'.format(vcard))
 
 
-@python_2_unicode_compatible
 class BasePeoplePlugin(CMSPlugin):
 
     STYLE_CHOICES = [
